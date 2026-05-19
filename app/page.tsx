@@ -284,7 +284,7 @@ const useStore = create((set, get) => ({
   ],
 
   setAuth: (user: any) => set({ user, view: user ? 'chat' : 'auth' }),
-  setView: (view) => set({ view }),
+  setView: (view: any) => set({ view }),
   toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
   toggleMobileMenu: () => set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
   setCompareMode: (val) => set({ isCompareMode: val, selectedModels: val ? get().selectedModels.slice(0, 2) : [get().selectedModels[0]] }),
