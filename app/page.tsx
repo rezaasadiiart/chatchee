@@ -283,7 +283,7 @@ const useStore = create((set, get) => ({
     { id: '3', title: 'ایده‌های استارتاپی', date: 'دیروز', group: 'دیروز', pinned: false },
   ],
 
-  setAuth: (user) => set({ user, view: user ? 'chat' : 'auth' }),
+  setAuth: (user: any) => set({ user, view: user ? 'chat' : 'auth' }),
   setView: (view) => set({ view }),
   toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
   toggleMobileMenu: () => set((state) => ({ isMobileMenuOpen: !state.isMobileMenuOpen })),
