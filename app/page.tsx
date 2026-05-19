@@ -152,7 +152,12 @@ const t = {
 };
 
 const DesignTokens = () => {
-  const { theme, dir } = useStore();
+  const store = useStore() as {
+  theme: string;
+  dir: string;
+};
+
+const { theme, dir } = store;
   
   useEffect(() => {
     const root = document.documentElement;
