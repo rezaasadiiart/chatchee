@@ -301,7 +301,7 @@ const useStore = create((set, get) => ({
 
     if (isCompareMode) {
       if (selectedModels.includes(modelId)) {
-        if (selectedModels.length > 1) set({ selectedModels: selectedModels.filter(m => m !== modelId) });
+        if (selectedModels.length > 1) set({ selectedModels: selectedModels.filter((m: any) => m !== modelId) });
       } else {
         const newModels = selectedModels.length >= 2 ? [selectedModels[1], modelId] : [...selectedModels, modelId];
         set({ selectedModels: newModels });
@@ -429,7 +429,7 @@ const Button = ({ children, variant = 'primary', className = '', ...props }) => 
 };
 
 const AuthView = () => {
-  const setAuth = useStore(s => s.setAuth);
+  const setAuth = (useStore as any)((s: any) => s.setAuth);
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -913,14 +913,14 @@ const Sidebar = () => {
     setSearchOpen, setSettingsOpen, setRenameChatId, setDeleteChatId, togglePinChat
   } = useStore();
 
-  const isSearchOpen = useStore(s => s.isSearchOpen);
-  const isSettingsOpen = useStore(s => s.isSettingsOpen);
-  const activeSettingsTab = useStore(s => s.activeSettingsTab);
-  const renameChatId = useStore(s => s.renameChatId);
-  const deleteChatId = useStore(s => s.deleteChatId);
-  const theme = useStore(s => s.theme);
-  const narrator = useStore(s => s.narrator);
-  const voiceFullscreenMode = useStore(s => s.voiceFullscreenMode);
+  const isSearchOpen = useStore((s: any) => s.isSearchOpen);
+  const isSettingsOpen = useStore((s: any) => s.isSettingsOpen);
+  const activeSettingsTab = useStore((s: any) => s.activeSettingsTab);
+  const renameChatId = useStore((s: any) => s.renameChatId);
+  const deleteChatId = useStore((s: any) => s.deleteChatId);
+  const theme = useStore((s: any) => s.theme);
+  const narrator = useStore((s: any) => s.narrator);
+  const voiceFullscreenMode = useStore((s: any) => s.voiceFullscreenMode);
 
   const [profilePopupOpen, setProfilePopupOpen] = useState(false);
   const profilePopupRef = useRef(null);
@@ -2902,7 +2902,7 @@ const Composer = () => {
 };
 
 const PricingView = () => {
-  const setView = useStore(s => s.setView);
+  const setView = useStore((s: any) => s.setView);
   const plans = [
     { name: 'رایگان', price: '۰', features: ['مدل‌های پایه', 'جستجوی محدود', '۵ فایل در روز'], current: true },
     { name: 'پرو', price: '۹۹,۰۰۰', features: ['مدل‌های پیشرفته (GPT-4)', 'مقایسه نامحدود', 'تولید تصویر', 'پشتیبانی اولویت‌دار'], popular: true },
