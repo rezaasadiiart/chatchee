@@ -293,9 +293,9 @@ const useStore = create((set, get) => ({
   set((state: any) => ({
     isMobileMenuOpen: !state.isMobileMenuOpen,
   })),
-  setCompareMode: (val) => set({ isCompareMode: val, selectedModels: val ? get().selectedModels.slice(0, 2) : [get().selectedModels[0]] }),
+  setCompareMode: (val: any) => set({ isCompareMode: val, selectedModels: val ? get().selectedModels.slice(0, 2) : [get().selectedModels[0]] }),
   
-  toggleModel: (modelId) => {
+  toggleModel: (modelId: any) => {
     const { isCompareMode, selectedModels } = get();
     if (modelId === 'gemini' || modelId === 'grok') return;
 
@@ -311,7 +311,7 @@ const useStore = create((set, get) => ({
     }
   },
 
-  addMessage: (msg) => set((state) => {
+  addMessage: (msg) => set((state: any) => {
     const newMessages = [...state.messages, msg];
     let newHistory = state.history;
     let nextChatId = state.currentChatId;
@@ -332,32 +332,32 @@ const useStore = create((set, get) => ({
       currentChatId: nextChatId
     };
   }),
-  setThinking: (val) => set({ isThinking: val }),
+  setThinking: (val: any) => set({ isThinking: val }),
   clearChat: () => set({ messages: [], currentChatId: null, tempMode: false }),
-  setTempMode: (val) => set({ tempMode: val }),
+  setTempMode: (val: any) => set({ tempMode: val }),
 
-  deleteChat: (id) => set((state) => ({ 
+  deleteChat: (id) => set((state: any) => ({ 
     history: state.history.filter(h => h.id !== id),
     currentChatId: state.currentChatId === id ? null : state.currentChatId,
     messages: state.currentChatId === id ? [] : state.messages
   })),
-  togglePinChat: (id) => set((state) => ({
+  togglePinChat: (id) => set((state: any) => ({
     history: state.history.map(h => h.id === id ? { ...h, pinned: !h.pinned } : h)
   })),
-  renameChat: (id, newTitle) => set((state) => ({
+  renameChat: (id, newTitle) => set((state: any) => ({
     history: state.history.map(h => h.id === id ? { ...h, title: newTitle } : h)
   })),
 
-  setSearchOpen: (val) => set({ isSearchOpen: val }),
-  setSettingsOpen: (val) => set({ isSettingsOpen: val }),
+  setSearchOpen: (val: any) => set({ isSearchOpen: val }),
+  setSettingsOpen: (val: any) => set({ isSettingsOpen: val }),
   setActiveSettingsTab: (tab) => set({ activeSettingsTab: tab }),
   setRenameChatId: (id) => set({ renameChatId: id }),
   setDeleteChatId: (id) => set({ deleteChatId: id }),
 
   setLang: (lang) => set({ lang, dir: (lang === 'en') ? 'ltr' : 'rtl' }),
   setTheme: (theme) => set({ theme: 'light' }), 
-  setVoiceFullscreenMode: (val) => set({ voiceFullscreenMode: val }),
-  setNarrator: (val) => set({ narrator: val }),
+  setVoiceFullscreenMode: (val: any) => set({ voiceFullscreenMode: val }),
+  setNarrator: (val: any) => set({ narrator: val }),
 }));
 
 const MODELS = [
