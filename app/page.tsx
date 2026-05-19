@@ -293,10 +293,10 @@ const useStore = create((set, get) => ({
   set((state: any) => ({
     isMobileMenuOpen: !state.isMobileMenuOpen,
   })),
-  setCompareMode: (val: any) => set({ isCompareMode: val, selectedModels: val ? get().selectedModels.slice(0, 2) : [get().selectedModels[0]] }),
+  setCompareMode: (val: any) => set({ isCompareMode: val, selectedModels: val ? (get() as any).selectedModels.slice(0, 2) : [(get() as any).selectedModels[0]] }),
   
   toggleModel: (modelId: any) => {
-    const { isCompareMode, selectedModels } = get();
+    const { isCompareMode, selectedModels } = (get() as any);
     if (modelId === 'gemini' || modelId === 'grok') return;
 
     if (isCompareMode) {
